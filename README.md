@@ -6,7 +6,7 @@ observations into ILAMB-compatible NetCDF, validate conversions, and run ILAMB b
 ## Setup
 
 ```bash
-cd /mnt/disks/wiemip-data/dvmdostem-ilamb
+cd /path-to-your-folder/dvmdostem-ilamb
 python3 -m venv .venv
 .venv/bin/pip install -e .
 .venv/bin/pip install -e ../ILAMB   # requires mpi4py; use conda if needed
@@ -15,7 +15,7 @@ python3 -m venv .venv
 Set the ILAMB data root for all stages:
 
 ```bash
-export ILAMB_ROOT=/mnt/disks/wiemip-data/dvmdostem-ilamb/outputs
+export ILAMB_ROOT=/path-to-your-folder/dvmdostem-ilamb/outputs
 ```
 
 ## Stages
