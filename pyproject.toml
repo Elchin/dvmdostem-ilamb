@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dvmdostem-ilamb"
+version = "0.1.0"
+description = "Convert DVMDOSTEM Site-Runs data to ILAMB-compatible NetCDF"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyyaml",
+    "netCDF4",
+    "cftime",
+    "xarray",
+    "matplotlib",
+]
+
+[project.scripts]
+dvmdostem-convert-obs = "dvmdostem_ilamb.convert_abcflux:main"
+dvmdostem-convert-model = "dvmdostem_ilamb.convert_model:main"
+dvmdostem-check-conversions = "dvmdostem_ilamb.check_conversions:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,48 @@
+# Stage 1: Convert ABCFlux + fallback observations to ILAMB site NetCDF.
+
+site_runs_root: /mnt/disks/wiemip-data/Site-Runs_Sep2026
+community_descriptions: /mnt/disks/wiemip-data/Site-Runs_Sep2026/Community_Descriptions.csv
+abcflux_csv: /mnt/disks/wiemip-data/Site-Runs_Sep2026/ABCFluxv2.ter.aq1.csv
+fallback_observations_root: /mnt/disks/wiemip-data/Site-Runs_Sep2026/observations
+
+# Optional explicit CMT -> CSV path lists (relative to fallback_observations_root or absolute).
+fallback_cmt_map:
+  CMT55:
+    - ca_daringlake_mt_gpp.csv
+    - ca_daringlake_mt_reco.csv
+    - ca_daringlake_mt_nee.csv
+  CMT56:
+    - ca_daringlake_mt_gpp.csv
+    - ca_daringlake_mt_reco.csv
+    - ca_daringlake_mt_nee.csv
+  CMT61:
+    - ca_scbog_gpp.csv
+    - ca_scbog_reco.csv
+    - ca_scbog_nee.csv
+
+# Prefix patterns keyed by input-catalog name (used when CMTxx/ dir is missing).
+fallback_catalog_prefixes:
+  daringlake: ca_daringlake_mt
+  CA_scotty_creek: ca_scbog
+  trail_valley: ca_trail_valley
+
+# Empty list = all CMT directories under Site_Runs.
+cmt_include: []
+
+variables:
+  - gpp
+  - reco
+  - nee
+  - npp
+
+output_root: /mnt/disks/wiemip-data/dvmdostem-ilamb/outputs/DATA
+benchmark_name: SiteRuns_Obs
+time_origin: "1850-01-01"
+output_units: "g m-2 d-1"
+abcflux_sign: abs  # abs | raw
+derive_npp: true
+derive_nee: true
+encodings:
+  - utf-8
+  - cp1252
+  - latin1

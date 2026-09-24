@@ -1,0 +1,19 @@
+# Stage 3: Validate converted observation and model NetCDF files.
+
+ilamb_root: /mnt/disks/wiemip-data/dvmdostem-ilamb/outputs
+community_descriptions: /mnt/disks/wiemip-data/Site-Runs_Sep2026/Community_Descriptions.csv
+site_runs_root: /mnt/disks/wiemip-data/Site-Runs_Sep2026/Site_Runs
+benchmark_name: SiteRuns_Obs
+model_name: DVMDOSTEM-SiteRuns
+variables:
+  - gpp
+  - reco
+  - nee
+  - npp
+latlon_tolerance_deg: 0.5
+example_cmts:
+  - CMT05
+  - CMT04
+  - CMT90
+diagnostics_dir: /mnt/disks/wiemip-data/dvmdostem-ilamb/outputs/diagnostics
+fail_on_critical: true

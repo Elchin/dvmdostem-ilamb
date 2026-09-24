@@ -1,0 +1,36 @@
+# Stage 2: Convert DVMDOSTEM site runs to ILAMB model NetCDF (1x1 per CMT).
+
+site_runs_root: /mnt/disks/wiemip-data/Site-Runs_Sep2026/Site_Runs
+community_descriptions: /mnt/disks/wiemip-data/Site-Runs_Sep2026/Community_Descriptions.csv
+
+cmt_include: []
+
+variables:
+  gpp:
+    nc_var: GPP
+    files:
+      - GPP_monthly_tr.nc
+      - GPP_monthly_sc.nc
+  reco:
+    nc_var: RECO
+    files:
+      - RECO_monthly_tr.nc
+      - RECO_monthly_sc.nc
+  npp:
+    nc_var: NPP
+    files:
+      - NPP_monthly_tr.nc
+      - NPP_monthly_sc.nc
+  nee:
+    derive_from:
+      - reco
+      - gpp
+    expression: "reco - gpp"
+
+output_root: /mnt/disks/wiemip-data/dvmdostem-ilamb/outputs/MODELS/DVMDOSTEM-SiteRuns
+model_name: DVMDOSTEM-SiteRuns
+run_mask_name: run-mask.nc
+grid_mode: nearest_tower  # nearest_tower | mean_for_10x10
+time_origin: "1850-01-01"
+output_units: "g m-2 d-1"
+fill_value: -9999.0
